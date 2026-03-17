@@ -1,5 +1,6 @@
 /* css for decidim_contagem */
 
+/* WhatsApp */
 .social-share__container {
     position: fixed;
     bottom: 32px;
@@ -26,4 +27,25 @@
 
 .social-share__icon:hover {
     scale: 1.1;
+}
+
+/* Hero image and CTA content block */
+.participatory-space__hero {
+    --tw-backdrop-brightness: brightness(50%);
+}
+
+.participatory-space__hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 240px;
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .participatory-space__hero-text .text-5xl {
+        font-size: 2rem;
+        line-height: 2.25rem;
+    }
 }
