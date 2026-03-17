@@ -1,1 +1,29 @@
 /* css for decidim_contagem */
+
+.social-share__container {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 99;
+}
+
+.social-share__icon {
+    height: 48px;
+    width: 48px;
+    margin-top: 1rem;
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    background: #fff;
+    fill: var(--primary);
+    box-shadow: 0 1px 6px #ccc;
+    box-shadow: 0 1px 6px #ccc;
+    transition: scale 0.2s ease;
+}
+
+.social-share__icon--whatsapp {
+    fill: #25D366;
+}
+
+.social-share__icon:hover {
+    scale: 1.1;
+}
