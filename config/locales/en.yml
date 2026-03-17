@@ -1,0 +1,6 @@
+---
+en:
+  decidim:
+    components:
+      contagem:
+        name: Contagem
