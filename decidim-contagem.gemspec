@@ -31,4 +31,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency "decidim-core", Decidim::Contagem.version
+
+  # GovBR
+  s.add_dependency "omniauth-oauth2"
 end

@@ -24,6 +24,13 @@ module Decidim
           config.data_migrations_path << root.join("db/data").to_s
         end
       end
+
+      initializer "decidim_contagem.setup_omniauth" do
+        Decidim.omniauth_providers[:govbr] = {
+          enabled:        false,
+          icon_path:      "media/images/govbr.svg",
+        }
+      end
     end
   end
 end
