@@ -4,24 +4,26 @@ module OmniAuth
   module Strategies
     class Govbr < OmniAuth::Strategies::OAuth2
       option :name, "govbr"
-
-      option :client_options, {
-        site:          "https://sso.acesso.gov.br",
-        authorize_url: "/authorize",
-        token_url:     "/token"
-      }
-
+      option :pkce, true
+      option :grant_type, "authorization_code"
       option :scope, "openid email profile govbr_confiabilidades"
-      option :response_type, "code"
+      option :client_options, {
+        site: "https://sso.acesso.gov.br",
+        authorize_url: "/authorize",
+        token_url: "/token",
+        userinfo_url: "/userinfo"
+      }
 
       uid { raw_info["sub"] }
 
       info do
         {
-          name:     raw_info["name"],
-          email:    raw_info["email"],
-          nickname: raw_info["preferred_username"],
-          cpf:      raw_info["cpf"]
+          sub: raw_info["sub"],
+          name: raw_info["name"],
+          nickname: nickname,
+          email: raw_info["email"],
+          locale: raw_info["locale"],
+          # cpf: raw_info["cpf"]&.gsub(/\D/, "")
         }
       end
 
@@ -30,17 +32,15 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get(userinfo_url).parsed
+        @_raw_info ||= access_token.get(options.client_options["userinfo_url"]).parsed || {}
       end
 
-      private
-
-      def userinfo_url
-        "#{options.client_options.site}/userinfo"
+      def callback_url
+        full_host + callback_path
       end
 
-      def pkce_verifier
-        @pkce_verifier ||= SecureRandom.hex(32)
+      def nickname
+        @_nickname ||= raw_info["name"].gsub(" ", "_").downcase
       end
     end
   end

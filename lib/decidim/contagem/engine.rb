@@ -25,7 +25,7 @@ module Decidim
         end
       end
 
-      initializer "decidim_contagem.setup_omniauth" do
+      initializer "Contagem.setup_omniauth" do
         Decidim.omniauth_providers[:govbr] = {
           enabled:        false,
           icon_path:      "media/images/govbr.svg",
