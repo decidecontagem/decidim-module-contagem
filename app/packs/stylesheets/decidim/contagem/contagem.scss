@@ -49,3 +49,14 @@
         line-height: 2.25rem;
     }
 }
+
+/* gov.br */
+.login__omniauth-button--govbr {
+    background-color: #1351b4;
+    color: #fff;
+    border-radius: 100em;
+}
+
+.login__omniauth-button--govbr .sr-only {
+    position: inherit;
+}
