@@ -1,9 +1,9 @@
 ---
-en:
+pt:
   decidim:
     components:
       contagem:
         name: Contagem
     content_blocks:
       horizontal_menu:
-        name: "Horizontal Menu Bar"
+        name: "Faixa de Menu Horizontal"
